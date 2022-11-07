@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "U2-JuegoFanorona-IA-181G0231-181G0138-181G0533/1.0.0": {
+        "runtime": {
+          "U2-JuegoFanorona-IA-181G0231-181G0138-181G0533.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "U2-JuegoFanorona-IA-181G0231-181G0138-181G0533/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
