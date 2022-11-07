@@ -1,0 +1,9 @@
+﻿<Application x:Class="U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:U2_JuegoFanorona_IA_181G0231_181G0138_181G0533"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
