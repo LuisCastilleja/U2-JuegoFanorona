@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models;
 
 namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533
 {
@@ -22,6 +23,8 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533
     {
         public MainWindow()
         {
+            Nodo nodo = new Nodo();
+            nodo.ChildrenGenerate(2, 9);
             InitializeComponent();
         }
     }

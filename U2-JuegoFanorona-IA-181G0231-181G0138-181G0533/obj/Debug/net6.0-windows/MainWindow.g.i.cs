@@ -53,8 +53,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/U2-JuegoFanorona-IA-181G0231-181G0138-181G0533;V1.0.0.0;component/mainwindow.xam" +
-                    "l", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/U2-JuegoFanorona-IA-181G0231-181G0138-181G0533;component/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
