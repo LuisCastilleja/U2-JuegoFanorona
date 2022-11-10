@@ -14,11 +14,11 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
 {
     public class Nodo
     {
-        public string State { get; set; } = "220000111";
+        public string State { get; set; } = "222201111";
         public List<Nodo> Children { get; set; } = new List<Nodo>();
         public int Value { get; set; }
-        public int Whites { get; set; } = 4;
-        public int Blacks { get; set; } = 4;
+        public int Whites { get; set; } = 0;
+        public int Blacks { get; set; } = 0;
         public int Turn { get; set; } = 1;
         private bool maximizing = false;
         private int openWhites;
@@ -52,32 +52,711 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
             {
                 if (State[i] == '0')
                 {
-                    var arrayState = State.ToArray();
-                    //Pendiente eliminar en la posicion que estaba la pieza que se movio y ver si hay piezas del otro 
-                    //Color enfrente, en diagonal y ver como llego para ver si se elimina  y restar a blancas o a negras
-                    arrayState[i] = char.Parse(Turn.ToString());
-                    var estadoHijo = new string(arrayState);
-                    Nodo son = new Nodo()
+                    var arrayState = State.ToCharArray();
+                   //Ver a que posicion quiere mover
+                    if(i == 0)
                     {
-                        State = new string(arrayState)
-                    };
-                    if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                    {
-                        //1 es blancas y 2 negras
-                        son.ChildrenGenerate((Turn == 1) ? Turn = 2 : Turn=1, depth - 1);
-                        //Empieza el maximizin en false porque se empieza minimizando
-                        MinMax(depth, maximizing);
-                    }
-                    if (maximizing == true)
-                    {
-                        maximizing = false;
-                    }
-                    else
-                    {
-                        maximizing = true;
-                    }
-                    Children.Add(son);
+                        //Ver si de donde esta puede moverse a la posicion 0
+                        if (arrayState[1] == char.Parse(Turn.ToString()) || arrayState[3] == char.Parse(Turn.ToString()) 
+                            || arrayState[4] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[1] == char.Parse(Turn.ToString()) ? 1  : 
+                                arrayState[3] == char.Parse(Turn.ToString()) ? 3 :4;
+                            //Eliminacion de pieza por alejamiento 
+                            if(posicion == 1)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    Whites--;
+                                    arrayState[2] = '0';
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 3)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
 
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 1)
+                    {
+                        //Ver si de donde esta puede moverse a la posicion 0
+                        if (arrayState[4] == char.Parse(Turn.ToString()) || arrayState[0] == char.Parse(Turn.ToString()) 
+                            || arrayState[2] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[4] == char.Parse(Turn.ToString()) ? 4 : 
+                                arrayState[0] == char.Parse(Turn.ToString()) ? 0 : 2;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[7] == '1' && Turn == 2)
+                                {
+                                    arrayState[7] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[7] == '2' && Turn == 1)
+                                {
+                                    arrayState[7] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 0)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    arrayState[2] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }   
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 2)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                    
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 2)
+                    {
+                        if (arrayState[4] == char.Parse(Turn.ToString()) || arrayState[1] == char.Parse(Turn.ToString()) 
+                            || arrayState[5] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[4] == char.Parse(Turn.ToString()) ? 4 : 
+                                arrayState[1] == char.Parse(Turn.ToString()) ? 1 : 5;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 1)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 5)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                                    
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 3)
+                    {
+                        if (arrayState[4] == char.Parse(Turn.ToString()) || arrayState[0] == char.Parse(Turn.ToString()) 
+                            || arrayState[6] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[4] == char.Parse(Turn.ToString()) ? 4 :
+                                arrayState[0] == char.Parse(Turn.ToString()) ? 0 : 6;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[5] == '1' && Turn == 2)
+                                {
+                                    arrayState[5] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[5] == '2' && Turn == 1)
+                                {
+                                    arrayState[5] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 0)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 6)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 4)
+                    {
+                        if (arrayState[0] == char.Parse(Turn.ToString()) || arrayState[1] == char.Parse(Turn.ToString()) 
+                            || arrayState[2] == char.Parse(Turn.ToString()) ||arrayState[3] == char.Parse(Turn.ToString())  
+                           || arrayState[5] == char.Parse(Turn.ToString()) || arrayState[6] == char.Parse(Turn.ToString())
+                           || arrayState[7] == char.Parse(Turn.ToString()) || arrayState[8] == char.Parse(Turn.ToString()))
+
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[0] == char.Parse(Turn.ToString()) ? 0 : arrayState[1] == char.Parse(Turn.ToString()) 
+                                ? 1 : arrayState[2] == char.Parse(Turn.ToString()) ? 2 : arrayState[3] == char.Parse(Turn.ToString()) ? 3 :
+                                arrayState[5] == char.Parse(Turn.ToString()) ? 5 : 
+                                arrayState[6] == char.Parse(Turn.ToString()) ? 6: arrayState[7] == char.Parse(Turn.ToString()) ? 7 : 8;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 0)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 1)
+                            {
+                                if (arrayState[7] == '1' && Turn == 2)
+                                {
+                                    arrayState[7] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[7] == '2' && Turn == 1)
+                                {
+                                    arrayState[7] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 2)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            if (posicion == 3)
+                            {
+                                if (arrayState[5] == '1' && Turn == 2)
+                                {
+                                    arrayState[5] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[5] == '2' && Turn == 1)
+                                {
+                                    arrayState[5] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            if (posicion == 5)
+                            {
+                                if (arrayState[3] == '1' && Turn == 2)
+                                {
+                                    arrayState[3] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[3] == '2' && Turn == 1)
+                                {
+                                    arrayState[3] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            if (posicion == 6)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    arrayState[2] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            if (posicion == 7)
+                            {
+                                if (arrayState[1] == '1' && Turn == 2)
+                                {
+                                    arrayState[1] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[1] == '2' && Turn == 1)
+                                {
+                                    arrayState[1] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            if (posicion == 8)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 5)
+                    {
+                        if (arrayState[4] == char.Parse(Turn.ToString()) || arrayState[2] == char.Parse(Turn.ToString()) 
+                            || arrayState[8] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[4] == char.Parse(Turn.ToString()) ? 4 : 
+                                arrayState[2] == char.Parse(Turn.ToString()) ? 2 : 8;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[3] == '1' && Turn == 2)
+                                {
+                                    arrayState[3] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[3] == '2' && Turn == 1)
+                                {
+                                    arrayState[3] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 2)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 8)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    arrayState[2] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 6)
+                    {
+                        if (arrayState[7] == char.Parse(Turn.ToString()) || arrayState[3] == char.Parse(Turn.ToString()) 
+                            || arrayState[4] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[7] == char.Parse(Turn.ToString()) ? 7 : 
+                                arrayState[3] == char.Parse(Turn.ToString()) ? 3 : 4;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 7)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 3)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    arrayState[2] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 7)
+                    {
+                        if (arrayState[4] == char.Parse(Turn.ToString()) || arrayState[6] == char.Parse(Turn.ToString()) 
+                            || arrayState[8] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[4] == char.Parse(Turn.ToString()) ? 4 :
+                                arrayState[6] == char.Parse(Turn.ToString()) ? 6 : 8;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[1] == '1' && Turn == 2)
+                                {
+                                    arrayState[1] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[1] == '2' && Turn == 1)
+                                {
+                                    arrayState[1] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 6)
+                            {
+                                if (arrayState[8] == '1' && Turn == 2)
+                                {
+                                    arrayState[8] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[8] == '2' && Turn == 1)
+                                {
+                                    arrayState[8] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por acercamiento 
+                            if (posicion == 8)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+
+
+                    if (i == 8)
+                    {
+                        if (arrayState[7] == char.Parse(Turn.ToString()) || arrayState[4] == char.Parse(Turn.ToString()) 
+                            || arrayState[5] == char.Parse(Turn.ToString()))
+                        {
+                            //Ver en que posicion estaba
+                            int posicion = arrayState[7] == char.Parse(Turn.ToString()) ? 7 : 
+                                arrayState[4] == char.Parse(Turn.ToString()) ? 4 : 5;
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion ==7)
+                            {
+                                if (arrayState[6] == '1' && Turn == 2)
+                                {
+                                    arrayState[6] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[6] == '2' && Turn == 1)
+                                {
+                                    arrayState[6] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 4)
+                            {
+                                if (arrayState[0] == '1' && Turn == 2)
+                                {
+                                    arrayState[0] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[0] == '2' && Turn == 1)
+                                {
+                                    arrayState[0] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            //Eliminacion de pieza por alejamiento 
+                            if (posicion == 5)
+                            {
+                                if (arrayState[2] == '1' && Turn == 2)
+                                {
+                                    arrayState[2] = '0';
+                                    Whites--;
+                                }
+                                if (arrayState[2] == '2' && Turn == 1)
+                                {
+                                    arrayState[2] = '0';
+                                    Blacks--;
+                                }
+                            }
+                            arrayState[posicion] = '0';
+                            arrayState[i] = char.Parse(Turn.ToString());
+                            Nodo son = new Nodo()
+                            {
+                                State = new string(arrayState)
+                            };
+                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                            {
+
+                                MinMax(son, depth, !maximizing);
+                                //1 es blancas y 2 negras
+                                //ChangeTurn(Turn);
+                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                                //Empieza el maximizin en false porque se empieza minimizando
+                            }
+                            Children.Add(son);
+                        }
+                    }
+                  
                 }
             }
         }
@@ -139,7 +818,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
         {
             get { return WinnerWhitesOrBlacks(Whites, Blacks); }
         }
-        public int MinMax(int depth, bool maximizingToPlayer)
+        public int MinMax(Nodo nodo,int depth, bool maximizingToPlayer)
         {
             if (depth == 0 || FinalGame)
             {
@@ -151,12 +830,11 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                 if (maximizingToPlayer)
                 {
                     int value = int.MinValue;
-                    foreach (var hijo in Children)
+                    foreach (var son in Children)
                     {
-                        Value = Math.Max(Value, MinMax(depth - 1, !maximizingToPlayer));
+                        Value = Math.Max(value, MinMax(nodo,depth - 1, !maximizingToPlayer));
                     }
                     Value = value;
-                    Turn = 1;
                     return value;
                 }
                 else
@@ -164,13 +842,17 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                     int value = int.MaxValue;
                     foreach (var son in Children)
                     {
-                        value = Math.Min(value, son.MinMax(depth - 1, maximizingToPlayer));
+                        Value = Math.Min(value, son.MinMax(nodo,depth - 1, maximizingToPlayer));
                     }
                     Value = value;
-                    Turn = 2;
                     return value;
                 }
             }
+        }
+        public void ChangeTurn(int turn)
+        {
+            Turn = turn;
+            Turn = (Turn == 1) ? Turn = 2 : Turn = 1;
         }
     }
 }
