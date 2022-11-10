@@ -17,8 +17,8 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
         public string State { get; set; } = "222201111";
         public List<Nodo> Children { get; set; } = new List<Nodo>();
         public int Value { get; set; }
-        public int Whites { get; set; } = 0;
-        public int Blacks { get; set; } = 0;
+        public int Whites { get; set; } = 4;
+        public int Blacks { get; set; } = 4;
         public int Turn { get; set; } = 1;
         private bool maximizing = false;
         private int openWhites;
@@ -105,22 +105,6 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     Blacks--;
                                 }
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
                         }
                     }
 
@@ -177,22 +161,6 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     Blacks--;
                                 }
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
                         }
                     }
 
@@ -248,22 +216,6 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 }
                                     
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
                         }
                     }
 
@@ -318,22 +270,6 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     Blacks--;
                                 }
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
                         }
                     }
 
@@ -458,22 +394,6 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     Blacks--;
                                 }
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
                         }
                     }
 
@@ -527,23 +447,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     arrayState[2] = '0';
                                     Blacks--;
                                 }
-                            }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
+                            }                           
                         }
                     }
 
@@ -597,23 +501,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     arrayState[2] = '0';
                                     Blacks--;
                                 }
-                            }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
+                            }                          
                         }
                     }
 
@@ -667,23 +555,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     arrayState[6] = '0';
                                     Blacks--;
                                 }
-                            }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
+                            }                          
                         }
                     }
 
@@ -738,25 +610,24 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                     Blacks--;
                                 }
                             }
-                            arrayState[posicion] = '0';
-                            arrayState[i] = char.Parse(Turn.ToString());
-                            Nodo son = new Nodo()
-                            {
-                                State = new string(arrayState)
-                            };
-                            if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
-                            {
-
-                                MinMax(son, depth, !maximizing);
-                                //1 es blancas y 2 negras
-                                //ChangeTurn(Turn);
-                                son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
-                                //Empieza el maximizin en false porque se empieza minimizando
-                            }
-                            Children.Add(son);
+                           
                         }
                     }
-                  
+                    arrayState[i] = char.Parse(Turn.ToString());
+                    Nodo son = new Nodo()
+                    {
+                        State = new string(arrayState)
+                    };
+                    if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
+                    {
+
+                        MinMax(son, depth, !maximizing);
+                        //1 es blancas y 2 negras
+                        //ChangeTurn(Turn);
+                        son.ChildrenGenerate((turn == 1 ? turn = 2 : turn = 1), depth - 1);
+                        //Empieza el maximizin en false porque se empieza minimizando
+                    }
+                    Children.Add(son);
                 }
             }
         }
