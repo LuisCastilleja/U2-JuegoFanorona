@@ -24,7 +24,7 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533
         public MainWindow()
         {
             Nodo nodo = new Nodo();
-            nodo.ChildrenGenerate(1, 3);
+            nodo.ChildrenGenerate(1, 10);
             InitializeComponent();
         }
     }

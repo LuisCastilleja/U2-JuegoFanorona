@@ -69,11 +69,14 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     Whites--;
-                                    arrayState[2] = '0';
+                                    arrayState[2] = '0'; 
+                                    arrayState[1] = '0';
+
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[1] = '0';
                                     Blacks--;
                                 }
                             }
@@ -83,11 +86,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[3] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[3] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -97,11 +104,14 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[4] = '0';
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -124,11 +134,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[7] == '1' && Turn == 2)
                                 {
                                     arrayState[7] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[7] == '2' && Turn == 1)
                                 {
                                     arrayState[7] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -138,11 +152,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[0] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[0] = '0';
+
                                     Blacks--;
                                 }   
                             }
@@ -152,12 +170,16 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[2] = '0';
+
                                     Whites--;
                                 }
                                     
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[2] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -179,11 +201,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -193,11 +219,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[1] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[1] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -207,11 +237,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[5] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[5] = '0';
+
                                     Blacks--;
                                 }
                                     
@@ -234,11 +268,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[5] == '1' && Turn == 2)
                                 {
                                     arrayState[5] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[5] == '2' && Turn == 1)
                                 {
                                     arrayState[5] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -248,11 +286,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[0] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[0] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -262,11 +304,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[6] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[6] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -293,11 +339,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[0] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[0] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -307,11 +357,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[7] == '1' && Turn == 2)
                                 {
                                     arrayState[7] = '0';
+                                    arrayState[1] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[7] == '2' && Turn == 1)
                                 {
                                     arrayState[7] = '0';
+                                    arrayState[1] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -321,11 +375,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[2] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[2] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -334,11 +392,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[5] == '1' && Turn == 2)
                                 {
                                     arrayState[5] = '0';
+                                    arrayState[3] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[5] == '2' && Turn == 1)
                                 {
                                     arrayState[5] = '0';
+                                    arrayState[3] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -347,11 +409,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[3] == '1' && Turn == 2)
                                 {
                                     arrayState[3] = '0';
+                                    arrayState[5] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[3] == '2' && Turn == 1)
                                 {
                                     arrayState[3] = '0';
+                                    arrayState[5] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -360,11 +426,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[6] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[6] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -373,11 +443,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[1] == '1' && Turn == 2)
                                 {
                                     arrayState[1] = '0';
+                                    arrayState[7] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[1] == '2' && Turn == 1)
                                 {
                                     arrayState[1] = '0';
+                                    arrayState[7] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -386,11 +460,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[8] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[8] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -412,11 +490,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[3] == '1' && Turn == 2)
                                 {
                                     arrayState[3] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[3] == '2' && Turn == 1)
                                 {
                                     arrayState[3] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -426,11 +508,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[2] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[2] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -440,11 +526,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[8] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[8] = '0';
+
                                     Blacks--;
                                 }
                             }                           
@@ -466,11 +556,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[7] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[7] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -480,11 +574,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[3] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[3] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -494,11 +592,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }                          
@@ -520,11 +622,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[1] == '1' && Turn == 2)
                                 {
                                     arrayState[1] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[1] == '2' && Turn == 1)
                                 {
                                     arrayState[1] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -534,11 +640,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[8] == '1' && Turn == 2)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[6] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[8] == '2' && Turn == 1)
                                 {
                                     arrayState[8] = '0';
+                                    arrayState[6] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -548,11 +658,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[8] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[8] = '0';
+
                                     Blacks--;
                                 }
                             }                          
@@ -574,11 +688,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[6] == '1' && Turn == 2)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[7] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[6] == '2' && Turn == 1)
                                 {
                                     arrayState[6] = '0';
+                                    arrayState[7] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -588,11 +706,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[0] == '1' && Turn == 2)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[4] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[0] == '2' && Turn == 1)
                                 {
                                     arrayState[0] = '0';
+                                    arrayState[4] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -602,11 +724,15 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                                 if (arrayState[2] == '1' && Turn == 2)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[5] = '0';
+
                                     Whites--;
                                 }
                                 if (arrayState[2] == '2' && Turn == 1)
                                 {
                                     arrayState[2] = '0';
+                                    arrayState[5] = '0';
+
                                     Blacks--;
                                 }
                             }
@@ -616,6 +742,8 @@ namespace U2_JuegoFanorona_IA_181G0231_181G0138_181G0533.Models
                     arrayState[i] = char.Parse(Turn.ToString());
                     Nodo son = new Nodo()
                     {
+                        Whites = Whites,
+                        Blacks = Blacks,
                         State = new string(arrayState)
                     };
                     if (depth > 1 && !WinnerWhitesOrBlacks(Whites, Blacks))
